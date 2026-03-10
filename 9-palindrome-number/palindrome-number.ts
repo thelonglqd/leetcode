@@ -1,6 +1,7 @@
 function isPalindrome(x: number): boolean {
     // x = 1, converted = 12
     if (x < 0 || (x % 10 === 0 && x !== 0)) return false
+    if (x < 10) return true;
 
     // remain vs converted
     let converted = 0;
