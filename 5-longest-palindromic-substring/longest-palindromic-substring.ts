@@ -1,5 +1,5 @@
 function expandAroundCenter(s, left, right) {
-  while(left >= 0 && right < s.length && s.charAt(left) === s.charAt(right)) {
+  while(left >= 0 && right < s.length && s[left] === s[right]) {
     left--;
     right++;
   }
@@ -10,6 +10,7 @@ function expandAroundCenter(s, left, right) {
 function longestPalindrome(s: string): string {
   let longest = 0;
   let start = 0;
+  let end = 0;
   
   for (let i = 0; i < s.length; i++) {
     let len1 = expandAroundCenter(s, i, i);
@@ -20,21 +21,11 @@ function longestPalindrome(s: string): string {
     if (actualLen > longest) {
       longest = actualLen
       start = i - Math.floor((actualLen - 1) / 2)
+      end = i + Math.floor(actualLen / 2)
     }
-    
-    // console.log('actualLen ::: ', actualLen)
-    // console.log('start ::: ', start)
-    // console.log('================')
   }
   
-  let output = ""
-  
-  while(output.length < longest) {
-    output += s.charAt(start)
-    start++;
-  }
-  
-  return output;
+  return s.substring(start, end + 1);
 };
 
-// longestPalindrome("babad");
+// longestPalindrome("cbbd");
