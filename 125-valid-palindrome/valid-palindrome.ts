@@ -14,25 +14,28 @@ function isPalindrome(s: string): boolean {
     }
 
     if (result.length === 1) return true;
-    let left, right;
 
-    let mid = Math.floor(result.length / 2);
+    return result.split("").reverse().join("") === result
+    
+    // let left, right;
 
-    if (result.length % 2 === 0) {
-        left = mid - 1;
-        right = mid
-    } else {
-        left = mid;
-        right = mid;
-    }
+    // let mid = Math.floor(result.length / 2);
 
-    while(left >= 0 && right < result.length) {
-        if (result[left] === result[right]) {
-            left--;
-            right++
-        } else return false
-    }
+    // if (result.length % 2 === 0) {
+    //     left = mid - 1;
+    //     right = mid
+    // } else {
+    //     left = mid;
+    //     right = mid;
+    // }
 
-    return true;
+    // while(left >= 0 && right < result.length) {
+    //     if (result[left] === result[right]) {
+    //         left--;
+    //         right++
+    //     } else return false
+    // }
+
+    // return true;
 
 };
