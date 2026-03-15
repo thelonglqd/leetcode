@@ -9,11 +9,9 @@ function isPalindrome(s: string): boolean {
             (code > 64 && code < 91) || // upper alpha (A-Z)
             (code > 96 && code < 123)   // lower alpha (a-z)
         ) {
-            result += s[i];
+            result += s[i].toLowerCase();
         }
     }
-
-    result = result.toLowerCase();
 
     if (result.length === 1) return true;
     let left, right;
