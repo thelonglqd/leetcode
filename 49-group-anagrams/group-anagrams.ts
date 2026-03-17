@@ -9,16 +9,16 @@ function generateKey(str) {
 }
 
 function groupAnagrams(strs) {
-    const tmp = new Map();
+    const tmp = {};
   
     for (let i = 0; i < strs.length; i++) {
         const key = generateKey(strs[i])
-        if (tmp.get(key)) {
-          tmp.get(key).push(strs[i])
+        if (tmp[key]) {
+          tmp[key].push(strs[i])
         } else {
-            tmp.set(key, [strs[i]])
+            tmp[key] = [strs[i]]
         }
     }
   
-    return [...tmp.values()];
+    return Object.values(tmp);
 };
