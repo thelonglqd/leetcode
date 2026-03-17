@@ -1,11 +1,11 @@
 function generateKey(str) {
-    const tmp = new Int32Array(26).fill(0)
+    const tmp = new Array(26).fill(0)
     
     for (let i = 0; i < str.length; i++) {
       tmp[str.charCodeAt(i) - 97]++
     }
   
-  return tmp.join("#")
+  return String.fromCharCode(...tmp)
 }
 
 function groupAnagrams(strs) {
