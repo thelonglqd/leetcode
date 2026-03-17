@@ -1,27 +1,24 @@
-function sortString(str) {
-    return str.split("").sort().join("");
+function generateKey(str) {
+    const tmp = new Int32Array(26).fill(0)
+    
+    for (let i = 0; i < str.length; i++) {
+      tmp[str.charCodeAt(i) - 97]++
+    }
+  
+  return tmp.join("#")
 }
 
 function groupAnagrams(strs) {
     const tmp = new Map();
   
     for (let i = 0; i < strs.length; i++) {
-        const key = sortString(strs[i])
-        console.log('key ::: ', key)
+        const key = generateKey(strs[i])
         if (tmp.get(key)) {
-            const newArr = tmp.get(key)
-            newArr.push(strs[i])
-            tmp.set(key, newArr)
+          tmp.get(key).push(strs[i])
         } else {
             tmp.set(key, [strs[i]])
         }
     }
   
-    const result = []
-  
-    for (let value of tmp.values()) {
-      result.push(value)
-    }
-  
-    return result;
+    return [...tmp.values()];
 };
